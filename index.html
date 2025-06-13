@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+
+        <script>
+
+//constant global variables
+let humanScore = 0;
+
+let computerScore = 0;
+
+
+//beginning of randomNum function
+
+//this function is going to return an interger from 0-2
+
+function randomNum(){
+    const minCeiled = Math.ceil(0);
+    const maxFloored = Math.floor (3);
+
+    return (Math.floor(Math.random() * (maxFloored-minCeiled) + minCeiled));
+}
+
+//end of randomNum function
+
+// const ranNum = randomNum();
+
+
+//beginning of getChoice function
+
+function getChoice(randomNum){
+    
+    if (randomNum === 0){
+        return "rock"
+    }
+    else if(randomNum===1){
+        return "paper"
+    }
+    else{
+        return "scissors"
+    }
+
+}
+
+// const computerChoice = getChoice(ranNum)
+
+//end of getChoice function
+
+// console.log(getComputerChoice)
+
+//we are going to assume that the user input the right thing
+function getHumanChoice(){
+    let input = prompt("enter rock, paper or scissors");
+    return input;
+}
+
+// const humanChoice = getHumanChoice();
+
+
+// console.log(humanChoice);
+
+function playRound(humanChoice, computerChoice){
+
+    if (humanChoice.toLowerCase() === computerChoice.toLowerCase()){
+        console.log("it's a tie");
+    } 
+    else if ((humanChoice.toLowerCase() == "rock" && computerChoice.toLowerCase() == "scissors")){
+        console.log("rock beats scissors")
+        humanScore += 1;
+
+    }
+    else if ((humanChoice.toLowerCase() == "scissors" && computerChoice.toLowerCase() == "paper")){
+        console.log("scissors beats paper");
+        humanScore +=1;
+    }
+    else if ((humanChoice.toLowerCase() == "paper" && computerChoice.toLowerCase() == "rock")){
+        console.log("paper beats rock");
+        humanScore +=1;
+    }
+    else{
+        console.log("(the computer choice) " + computerChoice + " beats " + humanChoice) 
+        computerScore +=1;
+    }
+
+}
+
+
+function playGame(){
+    
+
+    let i = 0;
+
+    while(i < 5){
+        const ranNum = randomNum();
+        const computerChoice = getChoice(ranNum);
+        const humanChoice = getHumanChoice();
+        playRound(humanChoice,computerChoice);
+        console.log("Current Score");
+        console.log("human score: " + humanScore);
+        console.log("computer score: " + computerScore);
+        i+=1;
+    }
+    console.log("final score:");
+    console.log("human score: " + humanScore);
+    console.log("computer score: " + computerScore);
+
+}
+playGame();
+
+
+
+
+        </script>
+
+    </head>
+
+
+
+</html>
